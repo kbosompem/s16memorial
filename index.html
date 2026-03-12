@@ -295,6 +295,66 @@ body {
   text-underline-offset: 3px;
 }
 
+/* ========== SCRIPTURE TOGGLE ========== */
+.version-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.version-btn {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 8px 22px;
+  border: 2px solid var(--border);
+  border-radius: 25px;
+  background: #fff;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.version-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.version-btn.active {
+  background: var(--wine);
+  border-color: var(--wine);
+  color: #fff;
+}
+
+.scripture-card {
+  background: #fff;
+  border-left: 4px solid var(--gold);
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+}
+
+.scripture-ref {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--wine);
+  margin-bottom: 12px;
+}
+
+.scripture-text {
+  font-style: italic;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.scripture-version { display: none; }
+.scripture-version.active { display: block; }
+
 /* ========== HYMNS ========== */
 .hymns-section {
   background: linear-gradient(180deg, var(--blush) 0%, var(--cream) 100%);
@@ -342,31 +402,6 @@ body {
 }
 
 .verse p {
-  color: var(--text);
-  font-size: 0.95rem;
-  line-height: 1.9;
-}
-
-/* ========== SCRIPTURE ========== */
-.scripture-card {
-  background: #fff;
-  border-left: 4px solid var(--gold);
-  padding: 25px 30px;
-  margin-bottom: 25px;
-  border-radius: 0 10px 10px 0;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.04);
-}
-
-.scripture-ref {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--wine);
-  margin-bottom: 12px;
-}
-
-.scripture-text {
-  font-style: italic;
   color: var(--text);
   font-size: 0.95rem;
   line-height: 1.9;
@@ -435,6 +470,7 @@ body {
   .cover-photo { width: 200px; height: 200px; }
   .nav a { font-size: 0.75rem; padding: 12px 10px; }
   .gallery { grid-template-columns: 1fr; }
+  .version-btn { padding: 6px 14px; font-size: 0.9rem; }
 }
 
 /* ========== PRINT ========== */
@@ -486,23 +522,16 @@ body {
 
   <ul class="order-list">
     <li class="order-item">
-      <span class="order-icon">🎵</span>
+      <span class="order-icon">🙏</span>
       <div class="order-text">
-        <span class="title">Praise &amp; Worship</span><br>
-        <span class="person">North Dallas</span>
+        <span class="title">Opening Prayer</span>
       </div>
     </li>
     <li class="order-item">
-      <span class="order-icon">🙏</span>
+      <span class="order-icon">🎵</span>
       <div class="order-text">
-        <span class="title">Opening Prayer</span><br>
-        <span class="person">Rev. Elorm Tsegah</span>
-      </div>
-    </li>
-    <li class="order-item hymn-link" onclick="document.getElementById('hymn1').scrollIntoView({behavior:'smooth'})">
-      <span class="order-icon">🎼</span>
-      <div class="order-text">
-        <span class="title">Hymn — My Faith Has Found a Resting Place</span>
+        <span class="title">Praise &amp; Worship</span><br>
+        <span class="person">Antoinette and Worship Stars</span>
       </div>
     </li>
     <li class="order-item">
@@ -512,12 +541,6 @@ body {
         <span class="person">Rev. John Eshun</span>
       </div>
     </li>
-    <li class="order-item hymn-link" onclick="document.getElementById('hymn2').scrollIntoView({behavior:'smooth'})">
-      <span class="order-icon">🎼</span>
-      <div class="order-text">
-        <span class="title">Hymn — O God, Our Help in Ages Past</span>
-      </div>
-    </li>
     <li class="order-item">
       <span class="order-icon">📖</span>
       <div class="order-text">
@@ -525,23 +548,23 @@ body {
         <span class="person">Ps. Evans Oppong Mensah</span>
       </div>
     </li>
-    <li class="order-item hymn-link" onclick="document.getElementById('hymn3').scrollIntoView({behavior:'smooth'})">
+    <li class="order-item hymn-link" onclick="document.getElementById('hymn-cross').scrollIntoView({behavior:'smooth'})">
       <span class="order-icon">🎼</span>
       <div class="order-text">
-        <span class="title">Hymn — Guide Me, O Thou Great Jehovah</span>
+        <span class="title">Hymn — Jesus, Keep Me Near the Cross</span>
       </div>
     </li>
     <li class="order-item">
       <span class="order-icon">📜</span>
       <div class="order-text">
         <span class="title">Biography</span><br>
-        <span class="person">Joey Marful-Sau</span>
+        <span class="person">Mr. Joseph Marful-Sau</span>
       </div>
     </li>
-    <li class="order-item hymn-link" onclick="document.getElementById('hymn4').scrollIntoView({behavior:'smooth'})">
+    <li class="order-item hymn-link" onclick="document.getElementById('hymn-sweet').scrollIntoView({behavior:'smooth'})">
       <span class="order-icon">🎼</span>
       <div class="order-text">
-        <span class="title">Hymn — Jesus, Keep Me Near the Cross</span>
+        <span class="title">Hymn — Sweet By and By</span>
       </div>
     </li>
     <li class="order-item">
@@ -549,12 +572,6 @@ body {
       <div class="order-text">
         <span class="title">Tribute by Grandchildren</span><br>
         <span class="person">Ms. Elyana Bosompem</span>
-      </div>
-    </li>
-    <li class="order-item hymn-link" onclick="document.getElementById('hymn5').scrollIntoView({behavior:'smooth'})">
-      <span class="order-icon">🎼</span>
-      <div class="order-text">
-        <span class="title">Hymn — Sweet By and By</span>
       </div>
     </li>
     <li class="order-item">
@@ -567,8 +584,7 @@ body {
     <li class="order-item">
       <span class="order-icon">🎤</span>
       <div class="order-text">
-        <span class="title">He Raised Me Up</span><br>
-        <span class="person">Nshira</span>
+        <span class="title">He Raised Me Up</span>
       </div>
     </li>
     <li class="order-item">
@@ -582,7 +598,7 @@ body {
       <span class="order-icon">🎤</span>
       <div class="order-text">
         <span class="title">He Will Carry You</span><br>
-        <span class="person">Dorcas</span>
+        <span class="person">Miracle</span>
       </div>
     </li>
     <li class="order-item">
@@ -596,7 +612,13 @@ body {
       <span class="order-icon">🙏</span>
       <div class="order-text">
         <span class="title">Prayer for Family</span><br>
-        <span class="person">Rev. Oko Djangmah</span>
+        <span class="person">Rev. Patrick Antwi and Pastors</span>
+      </div>
+    </li>
+    <li class="order-item">
+      <span class="order-icon">🗣️</span>
+      <div class="order-text">
+        <span class="title">Presentation by the Mfantse Mboa Kuw</span>
       </div>
     </li>
     <li class="order-item">
@@ -606,7 +628,7 @@ body {
         <span class="person">Mr. Alfred Kankam</span>
       </div>
     </li>
-    <li class="order-item hymn-link" onclick="document.getElementById('hymn1').scrollIntoView({behavior:'smooth'})">
+    <li class="order-item hymn-link" onclick="document.getElementById('hymn-faith').scrollIntoView({behavior:'smooth'})">
       <span class="order-icon">🎼</span>
       <div class="order-text">
         <span class="title">Closing Hymn — My Faith Has Found a Resting Place</span>
@@ -615,8 +637,7 @@ body {
     <li class="order-item">
       <span class="order-icon">🙏</span>
       <div class="order-text">
-        <span class="title">Closing Prayer</span><br>
-        <span class="person">Ps. Emmanuel Amoah</span>
+        <span class="title">Closing Prayer</span>
       </div>
     </li>
   </ul>
@@ -628,18 +649,56 @@ body {
   <h2 class="section-title">Scripture Readings</h2>
   <div class="section-ornament">— ✦ —</div>
 
-  <div class="scripture-card">
-    <div class="scripture-ref">1 Thessalonians 4:14–17 (NIV)</div>
-    <p class="scripture-text">
-      For we believe that Jesus died and rose again, and so we believe that God will bring with Jesus those who have fallen asleep in him. According to the Lord's word, we tell you that we who are still alive, who are left until the coming of the Lord, will certainly not precede those who have fallen asleep. For the Lord himself will come down from heaven, with a loud command, with the voice of the archangel and with the trumpet call of God, and the dead in Christ will rise first. After that, we who are still alive and are left will be caught up together with them in the clouds to meet the Lord in the air. And so we will be with the Lord forever.
-    </p>
+  <div class="version-toggle">
+    <button class="version-btn active" onclick="switchVersion('niv')">NIV</button>
+    <button class="version-btn" onclick="switchVersion('kjv')">KJV</button>
+    <button class="version-btn" onclick="switchVersion('nlt')">NLT</button>
   </div>
 
+  <!-- 1 Thessalonians 4:14-17 -->
   <div class="scripture-card">
-    <div class="scripture-ref">Revelation 21:1–5 (NIV)</div>
-    <p class="scripture-text">
-      Then I saw "a new heaven and a new earth," for the first heaven and the first earth had passed away, and there was no longer any sea. I saw the Holy City, the new Jerusalem, coming down out of heaven from God, prepared as a bride beautifully dressed for her husband. And I heard a loud voice from the throne saying, "Look! God's dwelling place is now among the people, and he will dwell with them. They will be his people, and God himself will be with them and be their God. He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away." He who was seated on the throne said, "I am making everything new!"
-    </p>
+    <div class="scripture-ref">1 Thessalonians 4:14–17</div>
+
+    <div class="scripture-version active" data-version="niv">
+      <p class="scripture-text">
+        For we believe that Jesus died and rose again, and so we believe that God will bring with Jesus those who have fallen asleep in him. According to the Lord's word, we tell you that we who are still alive, who are left until the coming of the Lord, will certainly not precede those who have fallen asleep. For the Lord himself will come down from heaven, with a loud command, with the voice of the archangel and with the trumpet call of God, and the dead in Christ will rise first. After that, we who are still alive and are left will be caught up together with them in the clouds to meet the Lord in the air. And so we will be with the Lord forever.
+      </p>
+    </div>
+
+    <div class="scripture-version" data-version="kjv">
+      <p class="scripture-text">
+        For if we believe that Jesus died and rose again, even so them also which sleep in Jesus will God bring with him. For this we say unto you by the word of the Lord, that we which are alive and remain unto the coming of the Lord shall not prevent them which are asleep. For the Lord himself shall descend from heaven with a shout, with the voice of the archangel, and with the trump of God: and the dead in Christ shall rise first: Then we which are alive and remain shall be caught up together with them in the clouds, to meet the Lord in the air: and so shall we ever be with the Lord.
+      </p>
+    </div>
+
+    <div class="scripture-version" data-version="nlt">
+      <p class="scripture-text">
+        For since we believe that Jesus died and was raised to life again, we also believe that when Jesus returns, God will bring back with him the believers who have died. We tell you this directly from the Lord: We who are still living when the Lord returns will not meet him ahead of those who have died. For the Lord himself will come down from heaven with a commanding shout, with the voice of the archangel, and with the trumpet call of God. First, the believers who have died will rise from their graves. Then, together with them, we who are still alive and remain on the earth will be caught up in the clouds to meet the Lord in the air. Then we will be with the Lord forever.
+      </p>
+    </div>
+  </div>
+
+  <!-- Revelation 21:1-5 -->
+  <div class="scripture-card">
+    <div class="scripture-ref">Revelation 21:1–5</div>
+
+    <div class="scripture-version active" data-version="niv">
+      <p class="scripture-text">
+        Then I saw "a new heaven and a new earth," for the first heaven and the first earth had passed away, and there was no longer any sea. I saw the Holy City, the new Jerusalem, coming down out of heaven from God, prepared as a bride beautifully dressed for her husband. And I heard a loud voice from the throne saying, "Look! God's dwelling place is now among the people, and he will dwell with them. They will be his people, and God himself will be with them and be their God. He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away." He who was seated on the throne said, "I am making everything new!"
+      </p>
+    </div>
+
+    <div class="scripture-version" data-version="kjv">
+      <p class="scripture-text">
+        And I saw a new heaven and a new earth: for the first heaven and the first earth were passed away; and there was no more sea. And I John saw the holy city, new Jerusalem, coming down from God out of heaven, prepared as a bride adorned for her husband. And I heard a great voice out of heaven saying, Behold, the tabernacle of God is with men, and he will dwell with them, and they shall be his people, and God himself shall be with them, and be their God. And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away. And he that sat upon the throne said, Behold, I make all things new.
+      </p>
+    </div>
+
+    <div class="scripture-version" data-version="nlt">
+      <p class="scripture-text">
+        Then I saw a new heaven and a new earth, for the old heaven and the old earth had disappeared. And the sea was also gone. And I saw the holy city, the new Jerusalem, coming down from God out of heaven like a bride beautifully dressed for her husband. I heard a loud shout from the throne, saying, "Look, God's home is now among his people! He will live with them, and they will be his people. God himself will be with them. He will wipe every tear from their eyes, and there will be no more death or sorrow or crying or pain. All these things are gone forever." And the one sitting on the throne said, "Look, I am making everything new!"
+      </p>
+    </div>
   </div>
 </section>
 
@@ -649,82 +708,8 @@ body {
   <h2 class="section-title">Hymns</h2>
   <div class="section-ornament">— ✦ —</div>
 
-  <!-- Hymn 1 -->
-  <div class="hymn-card" id="hymn1">
-    <h3>My Faith Has Found a Resting Place</h3>
-
-    <div class="verse">
-      <div class="verse-label">Verse 1</div>
-      <p>My faith has found a resting place,<br>Not in device nor creed;<br>I trust the ever-living One,<br>His wounds for me shall plead.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Refrain</div>
-      <p>I need no other argument,<br>I need no other plea,<br>It is enough that Jesus died,<br>And that He died for me.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 2</div>
-      <p>Enough for me that Jesus saves,<br>This ends my fear and doubt;<br>A sinful soul I come to Him,<br>He'll never cast me out.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 3</div>
-      <p>My heart is leaning on the Word,<br>The living Word of God,<br>Salvation by my Savior's name,<br>Salvation through His blood.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 4</div>
-      <p>My great Physician heals the sick,<br>The lost He came to save;<br>For me His precious blood He shed,<br>For me His life He gave.</p>
-    </div>
-  </div>
-
-  <!-- Hymn 2 -->
-  <div class="hymn-card" id="hymn2">
-    <h3>O God, Our Help in Ages Past</h3>
-
-    <div class="verse">
-      <div class="verse-label">Verse 1</div>
-      <p>O God, our help in ages past,<br>Our hope for years to come,<br>Our shelter from the stormy blast,<br>And our eternal home.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 2</div>
-      <p>Under the shadow of Thy throne<br>Still may we dwell secure;<br>Sufficient is Thine arm alone,<br>And our defense is sure.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 3</div>
-      <p>Before the hills in order stood,<br>Or earth received her frame,<br>From everlasting Thou art God,<br>To endless years the same.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 4</div>
-      <p>A thousand ages in Thy sight<br>Are like an evening gone;<br>Short as the watch that ends the night<br>Before the rising sun.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 5</div>
-      <p>Time, like an ever-rolling stream,<br>Bears all its sons away;<br>They fly, forgotten, as a dream<br>Dies at the opening day.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 6</div>
-      <p>O God, our help in ages past,<br>Our hope for years to come;<br>Be Thou our guide while life shall last,<br>And our eternal home.</p>
-    </div>
-  </div>
-
-  <!-- Hymn 3 -->
-  <div class="hymn-card" id="hymn3">
-    <h3>Guide Me, O Thou Great Jehovah</h3>
-
-    <div class="verse">
-      <div class="verse-label">Verse 1</div>
-      <p>Guide me, O Thou great Jehovah,<br>Pilgrim through this barren land;<br>I am weak, but Thou art mighty;<br>Hold me with Thy powerful hand;<br>Bread of heaven, bread of heaven,<br>Feed me till I want no more,<br>Feed me till I want no more.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 2</div>
-      <p>Open now the crystal fountain,<br>Whence the healing stream doth flow;<br>Let the fire and cloudy pillar<br>Lead me all my journey through;<br>Strong deliverer, strong deliverer,<br>Be Thou still my strength and shield,<br>Be Thou still my strength and shield.</p>
-    </div>
-    <div class="verse">
-      <div class="verse-label">Verse 3</div>
-      <p>When I tread the verge of Jordan,<br>Bid my anxious fears subside;<br>Death of death, and hell's destruction,<br>Land me safe on Canaan's side;<br>Songs of praises, songs of praises,<br>I will ever give to Thee,<br>I will ever give to Thee.</p>
-    </div>
-  </div>
-
-  <!-- Hymn 4 -->
-  <div class="hymn-card" id="hymn4">
+  <!-- Jesus, Keep Me Near the Cross -->
+  <div class="hymn-card" id="hymn-cross">
     <h3>Jesus, Keep Me Near the Cross</h3>
 
     <div class="verse">
@@ -749,8 +734,8 @@ body {
     </div>
   </div>
 
-  <!-- Hymn 5 -->
-  <div class="hymn-card" id="hymn5">
+  <!-- Sweet By and By -->
+  <div class="hymn-card" id="hymn-sweet">
     <h3>Sweet By and By</h3>
 
     <div class="verse">
@@ -768,6 +753,32 @@ body {
     <div class="verse">
       <div class="verse-label">Verse 3</div>
       <p>To our bountiful Father above,<br>We will offer our tribute of praise<br>For the glorious gift of His love<br>And the blessings that hallow our days.</p>
+    </div>
+  </div>
+
+  <!-- My Faith Has Found a Resting Place -->
+  <div class="hymn-card" id="hymn-faith">
+    <h3>My Faith Has Found a Resting Place</h3>
+
+    <div class="verse">
+      <div class="verse-label">Verse 1</div>
+      <p>My faith has found a resting place,<br>Not in device nor creed;<br>I trust the ever-living One,<br>His wounds for me shall plead.</p>
+    </div>
+    <div class="verse">
+      <div class="verse-label">Refrain</div>
+      <p>I need no other argument,<br>I need no other plea,<br>It is enough that Jesus died,<br>And that He died for me.</p>
+    </div>
+    <div class="verse">
+      <div class="verse-label">Verse 2</div>
+      <p>Enough for me that Jesus saves,<br>This ends my fear and doubt;<br>A sinful soul I come to Him,<br>He'll never cast me out.</p>
+    </div>
+    <div class="verse">
+      <div class="verse-label">Verse 3</div>
+      <p>My heart is leaning on the Word,<br>The living Word of God,<br>Salvation by my Savior's name,<br>Salvation through His blood.</p>
+    </div>
+    <div class="verse">
+      <div class="verse-label">Verse 4</div>
+      <p>My great Physician heals the sick,<br>The lost He came to save;<br>For me His precious blood He shed,<br>For me His life He gave.</p>
     </div>
   </div>
 </section>
@@ -796,6 +807,19 @@ body {
   <p class="footer-verse">"He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away."<br>— Revelation 21:4</p>
   <div class="footer-cross">✝</div>
 </footer>
+
+<script>
+function switchVersion(version) {
+  // Update buttons
+  document.querySelectorAll('.version-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === version);
+  });
+  // Update scripture text
+  document.querySelectorAll('.scripture-version').forEach(el => {
+    el.classList.toggle('active', el.dataset.version === version);
+  });
+}
+</script>
 
 </body>
 </html>
